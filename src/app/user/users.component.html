@@ -1,0 +1,5 @@
+<div *ngFor="let item of oUser | keyvalue">
+  <span title="{{getUsersByMonth(item.value)}}"
+  [ngClass]="{'grey': getUsersCount(item.value) > 0, 'blue': getUsersCount(item.value) > 2, 'green': getUsersCount(item.value) > 6, 'red': getUsersCount(item.value) > 10}"
+  >{{item.key}}</span>
+</div>
