@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../users.service';
 import { Observable } from 'rxjs';
 import { formatDate } from '@angular/common';
+import { LOCALE_ID, Inject } from "@angular/core";
 
 @Component({
   selector: 'app-users',
@@ -13,7 +14,9 @@ export class UsersComponent implements OnInit {
   oUser: {};
     
   constructor(
-    private userService: UsersService
+    @Inject(LOCALE_ID) 
+    public locale: string,
+    private userService: UsersService    
   ) { }
 
   ngOnInit() {    
@@ -29,7 +32,7 @@ export class UsersComponent implements OnInit {
 
   getMonth(date: string): string {
     let oDate: Date = new Date(date);
-    return formatDate(oDate, 'MMMM', 'en_US');
+    return formatDate(oDate, 'LLLL', this.locale);
   }
 
   getAdaptedData(aUser): void{
